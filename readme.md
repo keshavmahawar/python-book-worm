@@ -1,6 +1,6 @@
 #book_worm
-it is script to get links and delivery price from site www.myputak.com
-this is my first project in pyhon
+*it is script to get links and delivery price from site www.myputak.com
+*this is my first project in pyhon
 
 
 #feature
@@ -18,7 +18,7 @@ this is my first project in pyhon
 * chrome driver for selenium
 
 #usage
-->set chrome driver path in script and directly exectute script
-->enter name of book you want to search for
-->specify the no of books you want to get result for
-->book_worm_generated.html file will be generated with all links and price of books
+*set chrome driver path in script and directly exectute script
+*enter name of book you want to search for
+*specify the no of books you want to get result for
+*book_worm_generated.html file will be generated with all links and price of books
