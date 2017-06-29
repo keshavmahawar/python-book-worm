@@ -7,8 +7,8 @@ from bs4 import BeautifulSoup
 
 
 
-webdriver_path=r"C:\Users\kesma\Downloads\Compressed\chromedriver.exe"
 
+phantom_path=r"C:\Users\kesma\Downloads\phantomjs-2.1.1-windows\bin\phantomjs.exe"
 
 
 
@@ -20,8 +20,9 @@ def crawl(query):
     url=r'https://www.mypustak.com/get-books?search='+query
     print("worm geting into web browser")
 
-    driver = webdriver.Chrome(webdriver_path)
+    driver = webdriver.PhantomJS(phantom_path)
     driver.get(url)
+    driver.set_window_size(1024, 768)
     totalcount_div=driver.find_element_by_class_name("total-count")
 
     totalcount=totalcount_div.text
@@ -41,13 +42,14 @@ def scroll(driver,fetch_count):
         
 
         for _ in range(count):
-            driver.find_element_by_tag_name("body").send_keys(Keys.PAGE_DOWN)
-            time.sleep(5)
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);")
+            time.sleep(3)
         count=1
         text = driver.page_source
         soup = BeautifulSoup(text, "html.parser")
         items = soup.find_all('h3', {'class': 'pro-name'})
         if (len(items) >= fetch_count):
+
             break
     driver.close()
     print("generating book worm links-price file")
